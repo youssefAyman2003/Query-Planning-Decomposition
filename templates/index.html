@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Planning Decomposition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/app.css" />
+  </head>
+  <body>
+    <div class="frame">
+      <header class="topbar">
+        <div class="brand">
+          <span class="mark" aria-hidden="true"></span>
+          <div>
+            <p class="kicker">Retrieval / Planning</p>
+            <h1>Query Planning Decomposition</h1>
+          </div>
+        </div>
+        <div class="status" id="status">
+          <span class="dot"></span>
+          <span class="status-label">Warming index</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="composer">
+          <p class="section-label">01 / Question</p>
+          <h2>Decompose a complex query into focused retrieval steps.</h2>
+          <p class="lede">
+            The planner splits your question, retrieves evidence for each
+            sub-query, then writes one consolidated answer.
+          </p>
+
+          <label class="sr-only" for="question">Question</label>
+          <textarea
+            id="question"
+            rows="7"
+            maxlength="4000"
+            placeholder="Ask a multi-part question…"
+          >Explain how agent loops work and what are the challenges in diffusion video generation?</textarea>
+
+          <div class="chips" id="chips">
+            <button type="button" data-query="How do LLM agents plan, use memory, and call tools?">Agent system</button>
+            <button type="button" data-query="What are the main challenges in diffusion-based video generation?">Diffusion video</button>
+            <button type="button" data-query="Compare agent loops with reflection and subgoal decomposition.">Planning vs loops</button>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="run" id="run">Run pipeline</button>
+            <p class="hint" id="hint">Index loads once on startup, then queries run against it.</p>
+          </div>
+        </section>
+
+        <section class="results" id="results" aria-live="polite">
+          <div class="empty" id="empty">
+            <p class="section-label">02 / Output</p>
+            <h2>Waiting for a run.</h2>
+            <p>Sub-questions, sources, and the final answer will appear here.</p>
+          </div>
+
+          <div class="work hidden" id="work">
+            <article class="panel">
+              <p class="section-label">Plan</p>
+              <ol class="subs" id="subs"></ol>
+            </article>
+            <article class="panel">
+              <p class="section-label">Answer</p>
+              <div class="answer" id="answer"></div>
+            </article>
+            <article class="panel">
+              <p class="section-label">Sources</p>
+              <div class="sources" id="sources"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

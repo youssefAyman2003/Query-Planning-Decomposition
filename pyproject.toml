@@ -1,0 +1,29 @@
+[project]
+name = "query-planning-decomposition"
+version = "0.1.0"
+description = "RAG pipeline that plans and decomposes complex questions into sub-queries."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain>=0.3.0",
+    "langchain-community>=0.3.0",
+    "langchain-ollama>=0.3.0",
+    "langchain-text-splitters>=0.3.0",
+    "langgraph>=0.2.0",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "python-dotenv>=1.0",
+    "faiss-cpu>=1.8.0",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "jinja2>=3.1.0",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["configs*", "src*"]
